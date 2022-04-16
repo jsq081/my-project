@@ -25,7 +25,7 @@ Click "Start" to start the quiz game
 After "Start", timmer will countdown, defult setting is 10s, developers are able to change the countdown timmer. When times up, quiz game will end nomatter if user finish the game_quiz or not
 ![Timmer](img/Timmer.png)
 
-
+After select answer button, the correct answer will display in green, wrong answer will display in red
 ![RightOrWrong](img/RightOrWrong.png)
 
 
