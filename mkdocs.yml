@@ -1,0 +1,11 @@
+site_name: Quiz Game Library
+repo_url: https://github.com/csc309-winter-2022/js-library-jinsiqi1.git
+
+nav:
+    - Home: index.md
+    - About: about.md
+    - API: api.md
+    - Getting Started: getStarted.md
+    - Demo Example :  https://quiz-game-jsqqq.herokuapp.com/
+
+theme: readthedocs
