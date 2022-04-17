@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://jsq081.github.io/my-project/getStarted/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
     <title>Getting Started - Quiz Game Library</title>
     <link rel="stylesheet" href="../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Getting Started";
         var mkdocs_page_input_path = "getStarted.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/my-project/getStarted/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -45,15 +45,13 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
-                </li>
-              </ul>
-              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../api/">API</a>
                 </li>
               </ul>
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="./">Getting Started</a>
+    <ul class="current">
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -75,8 +73,6 @@
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Getting Started</li>
     <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/csc309-winter-2022/js-library-jinsiqi1.git/edit/master/docs/getStarted.md"
-          class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -85,7 +81,131 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="installation">Installation</h1>
+<p>Download quiz_game.js through <a href="https://github.com/csc309-winter-2022/js-library-jinsiqi1.git">GitHub Repo</a>.</p>
+<p>Include quiz_game.js 
+Include quiz_game.js in the html where you want to implement quiz game</p>
+<pre><code>&lt;script defer type =&quot;text/javascript&quot; src='js/quiz_game.js'&gt;&lt;/script&gt;
+</code></pre>
+<p>Include quiz_game.css (Optional)
+You could include the default quiz_game.css and modify the featues and format. Or you could re-implement the style.</p>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles/quiz_game.css&quot; media=&quot;screen&quot;&gt;
+
+</code></pre>
+<h1 id="example">Example</h1>
+<p>Easily modify question and answers game_quiz.js</p>
+<p>Add questions and answers with correct indication in following pattern</p>
+<pre><code>var questions = {
+        question0: {
+            question: &quot;What is 1+1 ?&quot;,
+            answers: [
+                { text: '1', correct: false },
+                { text: '2', correct: true }
+            ]
+        },
+        question1: {
+            question: &quot;What is the course number for Programming on Web ?&quot;,
+            answers: [
+                { text: 'csc111', correct: false },
+                { text: 'csc333', correct: false },
+                { text: 'csc309', correct: true },
+                { text: 'csc888', correct: false }
+            ]
+        },
+        question3: {
+            question: &quot;What is 2*2 ?&quot;,
+            answers: [
+                { text: '1', correct: false },
+                { text: '2', correct: false },
+                { text: '3', correct: false },
+                { text: '4', correct: true }
+            ]
+        },
+        question4: {
+            question: &quot;What is 6*6 ?&quot;,
+            answers: [
+                { text: '36', correct: true },
+                { text: '2', correct: false },
+                { text: '3', correct: false },
+                { text: '25', correct: false }
+            ]
+        }
+    }
+</code></pre>
+<p>Include quiz_game.js and quiz_game.css in the header</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+     &lt;meta charset=&quot;UTF-8&quot;&gt;
+     &lt;title&gt;Quiz Game Demo&lt;/title&gt;
+     &lt;!----load JS script--&gt;
+     &lt;script defer type =&quot;text/javascript&quot; src='js/quiz_game.js'&gt;&lt;/script&gt;
+     &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles/quiz_game.css&quot; media=&quot;screen&quot;&gt;
+&lt;/head&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p>Answers button </p>
+<div id="answer-buttons" class="btn-grid">
+                    <button class="btn">Example Answer a</button>
+                    <button class="btn">Example Answer b</button>
+                    <button class="btn">Example Answer c</button>
+                    <button class="btn">Example Answer d</button>
+               </div>
+
+<p>in html file</p>
+<pre><code>&lt;div id=&quot;answer-buttons&quot; class=&quot;btn-grid&quot;&gt;
+    &lt;button class=&quot;btn&quot;&gt;Example Answer a&lt;/button&gt;
+    &lt;button class=&quot;btn&quot;&gt;Example Answer b&lt;/button&gt;
+    &lt;button class=&quot;btn&quot;&gt;Example Answer c&lt;/button&gt;
+    &lt;button class=&quot;btn&quot;&gt;Example Answer d&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<p>in quiz_game.css modify</p>
+<pre><code>.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(1, auto); //modify button layout here
+  //grid-template-columns: repeat(2, auto);
+  gap: 10px;
+  margin: 20px 0;
+}
+</code></pre>
+<p>Control button "Start" and "Next" in html file</p>
+<div class="controls">
+    <button id="start-btn" class="start-btn btn">Start</button>
+    <button id="next-btn" class="next-btn btn hide">Next</button>
+</div>
+
+<pre><code>&lt;div class=&quot;controls&quot;&gt;
+    &lt;button id=&quot;start-btn&quot; class=&quot;start-btn btn&quot;&gt;Start&lt;/button&gt;
+    &lt;button id=&quot;next-btn&quot; class=&quot;next-btn btn hide&quot;&gt;Next&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Display timmer in html</p>
+<pre><code>&lt;span id=&quot;times&quot;&gt;&lt;/span&gt;
+</code></pre>
+<p>Display Result in html file</p>
+<pre><code>&lt;div class=&quot;result&quot; id=&quot;result&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p>Change correct and wrong answer color in quiz_game.css in style folder</p>
+<pre><code>/*Default*/
+:root {
+  --hue-neutral: 400;
+  --hue-wrong: 0;
+  --hue-correct: 145;
+}
+</code></pre>
+<p><img alt="RightOrWrong" src="../img/RightOrWrong.png" /></p>
+<pre><code>/*Modified*/
+:root {
+  --hue-neutral: 200;
+  --hue-wrong: 400;
+  --hue-correct: 100;
+}
+
+</code></pre>
+<p><img alt="Modify" src="../img/modify.png" /></p>
               
             </div>
           </div><footer>
@@ -111,10 +231,6 @@
 
   <div class="rst-versions" role="note" aria-label="Versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
-    
-        <span>
-          <a href="https://github.com/csc309-winter-2022/js-library-jinsiqi1.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
-        </span>
     
     
       <span><a href="../api/" style="color: #fcfcfc">&laquo; Previous</a></span>
