@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://jsq081.github.io/my-project/api/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
     <title>API - Quiz Game Library</title>
     <link rel="stylesheet" href="../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "API";
         var mkdocs_page_input_path = "api.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/my-project/api/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -44,12 +44,18 @@
                 <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
-                </li>
-              </ul>
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="./">API</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#initialize-a-quiz-object">Initialize a quiz object</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#events">Events</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#callbacks">Callbacks</a>
+    </li>
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -75,8 +81,6 @@
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>API</li>
     <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/csc309-winter-2022/js-library-jinsiqi1.git/edit/master/docs/api.md"
-          class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -85,12 +89,181 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="quiz-game-library-api">Quiz Game Library API</h1>
+<h3 id="initialize-a-quiz-object">Initialize a quiz object</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>question</td>
+<td>String</td>
+<td>the question set by developer</td>
+</tr>
+<tr>
+<td>answer</td>
+<td>Array</td>
+<td>the array of answers including text of question and the correction</td>
+</tr>
+<tr>
+<td>text</td>
+<td>Sting</td>
+<td>text of the answer</td>
+</tr>
+<tr>
+<td>correct</td>
+<td>Boolean</td>
+<td>set the answer to be correct or not</td>
+</tr>
+<tr>
+<td>item</td>
+<td>Array of Arrays</td>
+<td>you can set each item with question and answer</td>
+</tr>
+</tbody>
+</table>
+<p>You can set item in the fomat of below</p>
+<pre><code>item: {
+        question: &quot;What is 1+1 ?&quot;,
+        answers: [
+            { text: '1', correct: false },{ text: '2', correct: true },...]
+    }
+</code></pre>
+<p>You can initialize quiz game object in the fomat below</p>
+<pre><code>{
+    {
+        question: &quot;...&quot;,
+        answers: [{ text: '...', correct: false },{ text: '...', correct: true },...]
+    },
+    {
+        question: &quot;...&quot;,
+        answers: [{ text: '...', correct: true },...]
+    },
+        ...
+    }
+</code></pre>
+<h3 id="events">Events</h3>
+<p>When user click on the "Start" , "Next",and "Restart Quiz" it reset the status of the quiz object by resetStatus() to hide the "Next". Only after click on "Answers", "Next" will appear</p>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Discription</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startButton.addEventListener('click', startQuiz)</code></td>
+<td>add event listener if the startbutton is clicked, run the function startQuiz()</td>
+</tr>
+<tr>
+<td><code>nextButton.addEventListener('click',()=&gt;{goToNextQuestion()})</code></td>
+<td>if the next button is clicked display the next question</td>
+</tr>
+<tr>
+<td><code>button.addEventListener('click', selectAnswer)</code></td>
+<td>add event listener is the answer button is clicked run the seleceAnswer() function to count the score from selectAnswer</td>
+</tr>
+<tr>
+<td><code>selectAnswer(event)</code></td>
+<td>take in a event as a parameter, get the button answer that user selected and records the correct and wrong answer, set correct answer to button dataset</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods">Methods</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Params</th>
+<th>Discription</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>startQuiz()</td>
+<td>N/A</td>
+<td>start the quiz start the timmer inside</td>
+</tr>
+<tr>
+<td>randomOrder(questions)</td>
+<td>questions Object with Array of Arrays inside</td>
+<td>shuffuled through the questions to generate random order of the questions everytime when start the quiz</td>
+</tr>
+<tr>
+<td>goToNextQuestion()</td>
+<td>N/A</td>
+<td>Move to next question and display</td>
+</tr>
+<tr>
+<td>displayQuestion(question)</td>
+<td>question</td>
+<td>populating different answers in the question</td>
+</tr>
+<tr>
+<td>startSetTime()</td>
+<td>N/A</td>
+<td>Set timmer for quiz modify <code>let timmer = 10;</code> and <code>(timmer &gt; -1) {startSetTimeDate = setTimeout(() =&gt; {fun();}, 1000);</code> to change the timmer period</td>
+</tr>
+<tr>
+<td>resetState()</td>
+<td>N/A</td>
+<td>clear out old answer for the previous question when move to next function</td>
+</tr>
+<tr>
+<td>createAnswerButton(question)</td>
+<td>question</td>
+<td>create the answear button pass in the answear set in question</td>
+</tr>
+<tr>
+<td>checkIfhaveNext(mark)</td>
+<td>mark</td>
+<td>check if the question have next question behind, if not, the next button will not display</td>
+</tr>
+<tr>
+<td>setStatus(element, correct)</td>
+<td>element, correct</td>
+<td>clear the status of correct and wrong after finish answer each question so that the correct and wrong answers can be updated in next question</td>
+</tr>
+<tr>
+<td>clearStatus(element)</td>
+<td>element</td>
+<td>clear correct and wrong status for answer button</td>
+</tr>
+<tr>
+<td>getResult(length)</td>
+<td>length</td>
+<td>get the result for the quiz when finish all question and didn't restart the quiz</td>
+</tr>
+</tbody>
+</table>
+<h3 id="callbacks">Callbacks</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forEach</code></td>
+<td>function</td>
+<td>Iterarate through the answer button to set the status of answer button</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../about/" class="btn btn-neutral float-left" title="About"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../getStarted/" class="btn btn-neutral float-right" title="Getting Started">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -113,12 +286,8 @@
   <div class="rst-versions" role="note" aria-label="Versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     
-        <span>
-          <a href="https://github.com/csc309-winter-2022/js-library-jinsiqi1.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
-        </span>
     
-    
-      <span><a href="../about/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../getStarted/" style="color: #fcfcfc">Next &raquo;</a></span>
